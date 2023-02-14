@@ -1,5 +1,14 @@
 ---
 
+# ------------ INPUT VARIABLES --------------------------------------
+# The following variables are prepared in roles 10 and 20:
+#
+# all_config      : loaded all configuration yamls
+# status_dir      : from environment variable STATUS_DIR
+# cloud_platform
+
+
+
 # ------------ PREPARATION ------------------------------------------
 
 - debug:

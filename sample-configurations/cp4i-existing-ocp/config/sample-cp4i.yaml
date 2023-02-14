@@ -18,6 +18,7 @@ openshift:
     ocp_storage_class_file: rook-cephfs
     ocp_storage_class_block: rook-ceph-block
 
+
 cp4i:
 - project: cp4i
   openshift_cluster_name: "{{ env_id }}"
