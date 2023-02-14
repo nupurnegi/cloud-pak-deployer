@@ -1,8 +1,16 @@
 ---
 
+#
+# Pause Machine Config Operator
+#
+
 - name: Pause the Machine Config Operator
   include_role:
     name: cp-ocp-mco-pause
+
+#
+# Create image content source policy if private registry is used
+#
 
 - name: Create ImageContentSourcePolicy for the Cloud Pak with private registry
   include_role:
