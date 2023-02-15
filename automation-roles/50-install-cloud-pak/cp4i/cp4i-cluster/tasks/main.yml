@@ -3,9 +3,10 @@
 # INPUT VARIABLES:
 # The following variables are prepared in roles 10 and 20:
 #
-# all_config      : loaded all configuration yamls
-# status_dir      : from environment variable STATUS_DIR
+# all_config          : loaded all configuration yamls
+# status_dir          : from environment variable STATUS_DIR
 # cloud_platform
+# cpd_skip_cp_install : variable defined in cp-deploy.sh
 
 # PREREQUISITES:
 # vault with the entitlement key
@@ -107,12 +108,14 @@
 
 #
 # If Entitled registry is not used connect to a private registry
+# 
+# TODO temprary removed, should be adapted for cp4i
 #
 
-- name: Connect to private image registry
-  include_role: 
-    name: connect-private-image-registry
-  when: not (use_entitled_registry | bool)
+# - name: Connect to private image registry
+#   include_role: 
+#     name: connect-private-image-registry
+#   when: not (use_entitled_registry | bool)
 
 #
 # Reset directory for generated files

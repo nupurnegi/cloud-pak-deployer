@@ -1,17 +1,21 @@
 ---
 # ------------ SETTING PROCESSING FACTS -----------------------------
 
-- set_fact:
+- name: Use CASE files by default
+  set_fact:
     _use_case_files: True
 
-- set_fact:
+- name: Check the configuration for the use of CASE files
+  set_fact:
    _use_case_files: False
   when: (not current_cp4i_cluster.use_case_files | default(True) | bool)
 
-- set_fact:
+- name: Install operators in all namespaces by default
+  set_fact:
     _operators_in_all_namespaces: True
 
-- set_fact:
+- name: Check the configuration for the operators visbility
+  set_fact:
     _operators_in_all_namespaces: False
   when: (not current_cp4i_cluster.operators_in_all_namespaces | default(True) | bool)
 
@@ -24,15 +28,21 @@
 
 # ------------ DOWLOADING CASE FILES, MIRRORING IMAGES --------------
 
-- name: Prepare case files for Cloud Pak for Integration when using private registry or when explicitly using case files
-  include_tasks: prepare-cp4i-case-files.yml
-  when: _use_case_files
+- name: Download CASE files
+  block:
+  - name: Loop through instances and download CASE files for defined types
+    include_tasks: download-case-file.yml
+    loop: "{{ current_cp4i_cluster.instances | default([]) }}"
+    loop_control:
+      loop_var: current_cp4i_instance
+  when: _use_case_files  
+
 
 - name: Mirror images for Cloud Pak for Integration to private registry {{ current_cp4i_cluster.image_registry_name }}
   include_tasks: mirror-images-cp4i.yml
-  when: 
-  - (current_cp4i_cluster.image_registry_name | default("")) != ""
-  - ibm_cp_entitlement_key != ""
+  when: not (use_entitled_registry | bool)
+  # - (current_cp4i_cluster.image_registry_name | default("")) != ""
+  # - ibm_cp_entitlement_key != ""
 
 # ------------ OPENSHIFT OBJECTS ------------------------------------
 

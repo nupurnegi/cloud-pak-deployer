@@ -24,14 +24,15 @@
 
   # -------------------- ENTITLED REGISTRY ----------------------------
 
-  - name: Create catalog source from CASE archive {{ _instance_type_details.package_name }}-{{ instance_properties.case_version }}.tgz
+  - name: Create catalog source from CASE {{ _instance_type_details.package_name }}-{{ instance_properties.case_version }}
     shell: |
-      cloudctl case launch  \
-        --case {{ _case_dir }}/{{ _instance_type_details.package_name }}-{{ instance_properties.case_version }}.tgz \
-        --inventory {{ _instance_type_details.case_inventory }} \
-        --action install-catalog \
-        --namespace {{ current_cp4i_cluster.project }} \
-        --args "--registry cp.icr.io --inputDir {{ _case_dir }} --recursive" 
+      # cloudctl case launch  \
+      #   --case {{ _case_dir }}/{{ _instance_type_details.package_name }}-{{ instance_properties.case_version }}.tgz \
+      #   --inventory {{ _instance_type_details.case_inventory }} \
+      #   --action install-catalog \
+      #   --namespace {{ current_cp4i_cluster.project }} \
+      #   --args "--registry cp.icr.io --inputDir {{ _case_dir }} --recursive" 
+      oc apply -f ~/.ibm-pak/data/mirror/{{ _instance_type_details.package_name }}/{{ instance_properties.case_version }}/catalog-sources.yaml
 
   # -------------------- PRIVATE REGISTRY -----------------------------
 
