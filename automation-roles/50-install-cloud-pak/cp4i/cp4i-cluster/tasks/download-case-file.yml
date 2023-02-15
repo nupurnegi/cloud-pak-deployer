@@ -40,5 +40,6 @@
   - name: Create mirror manifest when private registry is used
     shell: |
       oc ibm-pak generate mirror-manifests {{ _instance_type_details.package_name }} --version {{ instance_properties.case_version }} {{ current_cp4i_cluster.image_registry_url }}
+    when: not (use_entitled_registry | bool)  
 
   when: (current_cp4i_instance.state | default('installed')) == 'installed'
