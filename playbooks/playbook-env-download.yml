@@ -85,22 +85,23 @@
 
   tasks:
   - block:
-#    - name: Download CLIs
-#      include_role:
-#        name: download-cli
-#      when: not (cpd_check_only | default(False) | bool)
-#
-#    - name: Remove case directory in case it exists
-#      file:
-#        path: "{{ status_dir }}/cp4d/case"
-#        state: absent
-#
-#    - name: Save case files for Cloud Pak for Data
-#      include_role:
-#        name: cp4d-case-save
-#      loop: "{{ all_config.cp4d | default([]) }}"
-#      loop_control:
-#        loop_var: _p_current_cp4d_cluster
+    - name: Download CLIs
+      include_role:
+        name: download-cli
+      when: not (cpd_check_only | default(False) | bool)
+
+    - name: Remove case directory in case it exists
+      file:
+        path: "{{ status_dir }}/cp4d/case"
+        state: absent
+
+    - name: Save case files for Cloud Pak for Data
+      include_role:
+        name: cp4d-case-save
+      loop: "{{ all_config.cp4d | default([]) }}"
+      loop_control:
+        loop_var: _p_current_cp4d_cluster
+        
     when: not (cpd_check_only | default(False) | bool)
 
 
