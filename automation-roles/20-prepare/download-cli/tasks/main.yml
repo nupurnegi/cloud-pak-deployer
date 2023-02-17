@@ -42,24 +42,4 @@
 - name: Download and install ibm-pak plugin
   include_role:
     name: ibm-pak-download
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    

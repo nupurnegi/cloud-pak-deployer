@@ -28,7 +28,7 @@ cp4i:
   instances:
 
   - type: platform-navigator
-    state: installed
+    state: removed
 
   - type: api-management
     state: removed
@@ -43,7 +43,7 @@ cp4i:
     state: removed
 
   - type: event-streams
-    state: installed
+    state: removed
   
   - type: high-speed-transfer-server
     state: removed
@@ -58,7 +58,7 @@ cp4i:
     state: removed
 
   - type: messaging
-    state: removed
+    state: installed
 
 
 
