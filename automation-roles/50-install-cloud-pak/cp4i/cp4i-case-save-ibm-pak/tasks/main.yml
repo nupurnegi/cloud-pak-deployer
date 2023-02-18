@@ -14,4 +14,7 @@
   set_fact:
     _ibm_pak_used: True
 
+- debug:
+    msg: ///////////////// Saving cp4i CASE-es ////////////////
+
 # for all listed instances

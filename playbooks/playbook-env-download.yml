@@ -120,7 +120,14 @@
       loop_control:
         loop_var: _p_current_cp4i_cluster
 
-    # <-- Add here case save roles for other ibm-pak based cloud paks
+    # <-- Call here case save roles for other ibm-pak based cloud paks
+
+    - name: If ibm-pak is used call its version of mirroring
+      block:
+      - name: Call ibm-pak based mirroring
+        include_role: 
+          name: cp-mirror-ibm-pak
+      when: (_ibm_pak_used | default(False) | bool) 
 
 # --- Mirroring with ibm-pak tool - END -------------------
 

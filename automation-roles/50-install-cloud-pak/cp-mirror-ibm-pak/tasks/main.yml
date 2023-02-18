@@ -1,0 +1,18 @@
+---
+
+- debug:
+    msg: ////////////// Mirroring with ibm-pak tool ////////////////
+
+
+# Find combination of registries
+
+# Start portable registry if needed
+
+# Do mirroring
+
+- name: Mirror images Cloud Pak for Integration
+  include_role:
+    name: cp4i-mirror-ibm-pak
+  loop: "{{ all_config.cp4i | default([]) }}"
+  loop_control:
+    loop_var: _p_current_cp4i_cluster
