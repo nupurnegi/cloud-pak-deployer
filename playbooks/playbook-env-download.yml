@@ -104,17 +104,9 @@
 
 # --- Mirroring with ibm-pak tool - BEGIN -----------------
 
-    - name: Cleanup ~/.ibm-pak directory in case it exists
+    - name: Remove ~/.ibm-pak directory in case it exists
       file:
-        path: "~/.ibm-pak/config"
-        state: absent
-
-    - file:
-        path: "~/.ibm-pak/data" 
-        state: absent
-
-    - file:
-        path: "~/.ibm-pak/logs" 
+        path: "~/.ibm-pak"
         state: absent
 
     - name: Init _ibm_pak_used flag (False)
