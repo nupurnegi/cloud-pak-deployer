@@ -102,7 +102,7 @@
       loop_control:
         loop_var: _p_current_cp4d_cluster
 
-    # --- added for the implementation of cp4i air-gapped installation ---
+# --- Mirroring with ibm-pak tool - BEGIN -----------------
 
     - name: Remove ~/.ibm-pak directory in case it exists
       file:
@@ -113,14 +113,16 @@
       set_fact:
         _ibm_pak_used: False
 
-    - name: Save case files for Cloud Pak for Integration
+    - name: Save CASE files for Cloud Pak for Integration
       include_role:
-        name: cp4i-mirror-air-gapped  # Sets also _ibm_pak_used to True
+        name: cp4i-case-save-ibm-pak
       loop: "{{ all_config.cp4i | default([]) }}"
       loop_control:
         loop_var: _p_current_cp4i_cluster
 
-    # --- /    
+    # <-- Add here case save roles for other ibm-pak based cloud paks
+
+# --- Mirroring with ibm-pak tool - END -------------------
 
 
     when: not (cpd_check_only | default(False) | bool)

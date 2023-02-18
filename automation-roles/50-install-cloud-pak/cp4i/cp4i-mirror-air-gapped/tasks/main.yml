@@ -1,8 +1,0 @@
----
-
-- name: Set _ibm_pak_used flag to True
-  set_fact:
-    _ibm_pak_used: True
-
-- debug:
-    msg: "////////////////////// TESTING ////////////////////" 

@@ -1,0 +1,17 @@
+---
+
+# Input:
+#   _p_current_cp4i_cluster       : processed cluster 
+#   cpd_skip_portable_registry    : if True mirror to private reg, otherwise to portable
+#
+#   registry parameters - of both registries
+
+# In/Out
+#   -ibm_pak_used : switch it to true 
+
+
+- name: Set _ibm_pak_used flag to True
+  set_fact:
+    _ibm_pak_used: True
+
+# for all listed instances
