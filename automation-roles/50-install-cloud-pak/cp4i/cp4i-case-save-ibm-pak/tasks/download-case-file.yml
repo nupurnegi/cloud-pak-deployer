@@ -34,7 +34,15 @@
     debug:
       var: _instance_type_details 
 
+  - fail:
+      msg: The definition of instance type {{ instance_properties.type }} not found
+    when: _instance_type_details=={}
+
   # ---------------------------------------------------------------
+
+  - name: Save case file {{ _instance_type_details.package_name }}-{{ _instance_properties.case_version }}
+    shell: |
+      oc ibm-pak get {{ _instance_type_details.package_name }} --version {{ _instance_properties.case_version }}
 
 
   when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'
