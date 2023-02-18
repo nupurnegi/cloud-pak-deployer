@@ -823,7 +823,7 @@ if ! $INSIDE_CONTAINER;then
   fi
 
   # Mount .ibm-pak 
-  run_cmd+=" -v ~/.ibm-pak:~/.ibm-pak:z"
+  run_cmd+=" -v ~/.ibm-pak:/root/.ibm-pak:z"
 
   if $CPD_DEVELOP;then run_cmd+=" -v ${PWD}:/cloud-pak-deployer:z";fi
 
