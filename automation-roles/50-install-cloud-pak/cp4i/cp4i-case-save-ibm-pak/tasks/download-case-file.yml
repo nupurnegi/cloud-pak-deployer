@@ -7,6 +7,11 @@
 - name: Download CASE file for {{ _p_current_cp4i_instance.type }}
   block:
 
+
+  # -------- obtaining instance properties and type details  ------
+  # potentially to be set in a separate role to 
+  # be reused in cp4i-mirror-ibm-pak and cp4i-cluster
+
   - name: Find version specific instance type properties
     include_tasks: get-instance-properties.yml
     # returns _instance_properties
@@ -14,6 +19,22 @@
   - name: Instance properties
     debug:
       var: _instance_properties 
+
+  - name: Include instance types variables
+    include_vars: ../../cp4i-cluster/vars/main.yml
+
+  - name: Get the details for instance type {{ _instance_properties.type }}
+    set_fact:
+      _instance_type_details: "{{ instance_types | json_query(query) | first | default({}) }}"
+    vars:
+      query: >-
+        [?type=='{{ _instance_properties.type }}']
+
+  - name: Instance type details
+    debug:
+      var: _instance_type_details 
+
+  # ---------------------------------------------------------------
 
 
   when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'
