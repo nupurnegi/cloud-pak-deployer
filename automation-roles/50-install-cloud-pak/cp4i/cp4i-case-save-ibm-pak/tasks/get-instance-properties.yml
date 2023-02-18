@@ -8,4 +8,4 @@
 
 
 - name: Include version details variables
-  include_vars: versions.yml
+  include_vars: ../../cp4i-cluster/vars/versions.yml
