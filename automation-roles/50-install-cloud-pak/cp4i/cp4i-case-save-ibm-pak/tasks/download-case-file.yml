@@ -8,7 +8,7 @@
   block:
 
   - name: Get instance properties and instance type details
-    include-role: 
+    include_role: 
       name: cp4i-instance-props
 
   - name: Save case file {{ _instance_type_details.package_name }}-{{ _instance_properties.case_version }}
