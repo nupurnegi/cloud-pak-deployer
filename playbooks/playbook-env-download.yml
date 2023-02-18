@@ -106,7 +106,15 @@
 
     - name: Cleanup ~/.ibm-pak directory in case it exists
       file:
-        path: "~/.ibm-pak/*"
+        path: "~/.ibm-pak/config"
+        state: absent
+
+    - file:
+        path: "~/.ibm-pak/data" 
+        state: absent
+
+    - file:
+        path: "~/.ibm-pak/logs" 
         state: absent
 
     - name: Init _ibm_pak_used flag (False)
