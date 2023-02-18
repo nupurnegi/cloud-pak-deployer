@@ -9,11 +9,11 @@
 
   - name: Find version specific instance type properties
     include_tasks: get-instance-properties.yml
+    # returns _instance_properties
 
-  - debug:
-      msg: 
-      - '//////////////////// Current instance properties ///////////////'
-      - '{{ _instance_properties }}'
+  - name: Instance properties
+    debug:
+      var: _instance_properties 
 
 
   when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'
