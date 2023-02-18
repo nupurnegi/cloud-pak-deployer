@@ -795,6 +795,9 @@ if [[ "${ACTION}" == "save" ]] && ! ${CHECK_ONLY};then
   exit 0
 fi
 
+# Prepare .ibm-pak directory to be mounted to the container
+mkdir -p ~/.ibm-pak
+
 # Build command when not running inside container
 if ! $INSIDE_CONTAINER;then
   run_cmd="${CPD_CONTAINER_ENGINE} run"
@@ -818,6 +821,9 @@ if ! $INSIDE_CONTAINER;then
   if [ "${CONFIG_DIR}" != "" ];then
     run_cmd+=" -v ${CONFIG_DIR}:${CONFIG_DIR}:z"
   fi
+
+  # Mount .ibm-pak 
+  run_cmd+=" -v ~/.ibm-pak:~/.ibm-pak:z"
 
   if $CPD_DEVELOP;then run_cmd+=" -v ${PWD}:/cloud-pak-deployer:z";fi
 
