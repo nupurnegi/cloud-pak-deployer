@@ -5,9 +5,6 @@
 #
 
 
-- debug:
-    msg: ////////////// Mirroring with ibm-pak tool ////////////////
-
 
 # Find combination of registries
 
@@ -22,3 +19,5 @@
   loop: "{{ all_config.cp4i | default([]) }}"
   loop_control:
     loop_var: _p_current_cp4i_cluster
+
+# <-- Add here mirroring other cloud paks that use ibm-pak

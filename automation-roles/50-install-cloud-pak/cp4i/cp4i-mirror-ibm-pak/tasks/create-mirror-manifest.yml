@@ -1,0 +1,29 @@
+---
+
+# Input:
+#
+#   _p_current_cp4i_instance  : currently processed instance
+#   _p_current_cp4i_cluster   : currently processed cp4i cluster
+#
+# Global parameter:
+#
+#  cpd_skip_portable_registry    : if True mirror to target reg, otherwise to portable
+
+
+
+
+- name: Create mirror manifest for {{ _p_current_cp4i_instance.type }}
+  block:
+
+  - name: Get instance properties and instance type details
+    include_role: 
+      name: cp4i-instance-props
+    # Returns:
+    # _instance_properties 
+    # _instance_type_details
+
+  # oc ibm-pak generate mirror-manifests ${CASE_NAME} --version ${CASE_VERSION} icr.io
+  # oc ibm-pak generate mirror-manifests $CASE_NAME --version $CASE_VERSION $TARGET_REGISTRY  
+
+
+  when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'  

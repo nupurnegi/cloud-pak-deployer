@@ -1,4 +1,21 @@
 ---
 
+# Input:
+#   _p_current_cp4i_cluster      : processed cluster 
+#  cpd_skip_portable_registry    : if True mirror to private reg, otherwise to portable
+#
+
+
 - debug:
-    msg: //////////////// Mirroring cp4i images //////////////
+    msg: Mirroring cp4i images using ibm-pak
+
+# We need information about registry at this point to be able to 
+# create manifests and correctly mirror images 
+
+
+- name: Loop through instances and mirror each of them
+  include_tasks: mirror-instance.yml
+  loop: "{{ _p_current_cp4i_cluster.instances | default([]) }}"
+  loop_control:
+    loop_var: _p_current_cp4i_instance
+
