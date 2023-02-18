@@ -12,15 +12,15 @@
 
 
 
-- name: Create mirror manifest for {{ _p_current_cp4i_instance.type }}
+- name: Mirror images for instance type {{ _p_current_cp4i_instance.type }}
   block:
 
   - name: Get instance properties and instance type details
     include_role: 
       name: cp4i-instance-props
-    # Returns:
+    # returns:
     # _instance_properties 
-    # _instance_type_details
+    # _instance_type_details  
 
   # oc ibm-pak generate mirror-manifests ${CASE_NAME} --version ${CASE_VERSION} icr.io
   # oc ibm-pak generate mirror-manifests $CASE_NAME --version $CASE_VERSION $TARGET_REGISTRY  
