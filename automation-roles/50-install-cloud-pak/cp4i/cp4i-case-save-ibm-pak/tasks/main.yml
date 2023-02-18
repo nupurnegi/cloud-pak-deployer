@@ -21,5 +21,3 @@
 #   loop_control:
 #     loop_var: current_cp4i_instance
 
-- name: Calling test
-  include_tasks: cp4i-test.yml
