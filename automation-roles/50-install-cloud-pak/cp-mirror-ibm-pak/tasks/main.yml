@@ -1,5 +1,10 @@
 ---
 
+# Input:
+#   cpd_skip_portable_registry    : if True mirror to private reg, otherwise to portable
+#
+
+
 - debug:
     msg: ////////////// Mirroring with ibm-pak tool ////////////////
 
@@ -8,7 +13,8 @@
 
 # Start portable registry if needed
 
-# Do mirroring
+# Do mirroring 
+# - the registry related variables must be prepared before
 
 - name: Mirror images Cloud Pak for Integration
   include_role:

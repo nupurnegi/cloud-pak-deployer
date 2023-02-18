@@ -6,8 +6,14 @@
 
 - name: Download CASE file for {{ _p_current_cp4i_instance.type }}
   block:
-    
+
   - name: Find version specific instance type properties
     include_tasks: get-instance-properties.yml
+
+  - debug:
+      msg: 
+      - '//////////////////// Current instance properties ///////////////'
+      - '{{ _instance_properties }}'
+
 
   when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'
