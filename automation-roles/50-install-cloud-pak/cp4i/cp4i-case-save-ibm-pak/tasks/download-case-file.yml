@@ -1,0 +1,13 @@
+---
+
+# Input:
+#   _p_current_cp4i_cluster       : processed cluster 
+#   _p_current_cp4i_instance      : instance defined in the cluster
+
+- name: Download CASE file for {{ _p_current_cp4i_instance.type }}
+  block:
+    
+  - name: Find version specific instance type properties
+    include_tasks: get-instance-properties.yml
+
+  when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'

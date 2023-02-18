@@ -1,0 +1,11 @@
+---
+# Input:
+#   _p_current_cp4i_cluster
+#   _p_current_cp4i_instance
+#
+# Output
+#   _instance_properties
+
+
+- name: Include version details variables
+  include_vars: versions.yml
