@@ -130,7 +130,7 @@
           name: cp-mirror-ibm-pak
 
       - name: Copy ibm-pak to status dir
-        command: cp -r /root/.ibm-pak/. /{{ status_dir }}/ibm-pak/
+        command: cp -r ~/.ibm-pak {{ status_dir }}/ibm-pak
 
       when: (_ibm_pak_used | default(False) | bool) 
 
