@@ -23,6 +23,10 @@ image_registry:
   registry_host_name: bastion.ocp410.tec.uk.ibm.com
   registry_port: 5000
   registry_insecure: true
+- name: demoreg1
+  registry_host_name: bastion1.ocp410.tec.uk.ibm.com
+  registry_port: 5001
+  registry_insecure: true
 
 cp4i:
 - project: cp4i

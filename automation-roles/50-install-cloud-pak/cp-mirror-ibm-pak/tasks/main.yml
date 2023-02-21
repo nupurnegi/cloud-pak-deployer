@@ -5,23 +5,13 @@
 #
 
 
-# TODO(SJ) Check here what is visible in all_config
+# TODO(SJ) IF NOT cpd_skip_portable_registry THEN start portable registry
+
 
 - debug:
     msg:
-      - "/////////////// all_config ////////////"
+      - "///////////////// all_config //////////////"
       - "{{ all_config }}"
-
-
-
-
-# Find combination of registries
-
-
-# Start portable registry if needed
-
-# Do mirroring 
-# - the registry related variables must be prepared before
 
 - name: Mirror images Cloud Pak for Integration
   include_role:
