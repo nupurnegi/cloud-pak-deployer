@@ -8,11 +8,6 @@
 # TODO(SJ) IF NOT cpd_skip_portable_registry THEN start portable registry
 
 
-- debug:
-    msg:
-      - "///////////////// all_config //////////////"
-      - "{{ all_config }}"
-
 - name: Mirror images Cloud Pak for Integration
   include_role:
     name: cp4i-mirror-ibm-pak

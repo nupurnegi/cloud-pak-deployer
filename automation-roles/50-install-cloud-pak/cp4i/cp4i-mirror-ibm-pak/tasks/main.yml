@@ -9,6 +9,11 @@
 # TODO(SJ) Check here what is visible in the current cluster
 
 - debug:
+    msg:
+      - "//////////////// _p_current_cp4i_cluster //////////"
+      - "{{ _p_current_cp4i_cluster }}"
+
+- debug:
     msg: Mirroring cp4i images using ibm-pak
 
 
