@@ -18,12 +18,18 @@ openshift:
     ocp_storage_class_file: rook-cephfs
     ocp_storage_class_block: rook-ceph-block
 
+image_registry:
+- name: demoreg
+  registry_host_name: bastion.ocp410.tec.uk.ibm.com
+  registry_port: 5000
+  registry_insecure: true
 
 cp4i:
 - project: cp4i
   openshift_cluster_name: "{{ env_id }}"
   cp4i_version: 2022.4.1-0
   accept_licenses: true
+  image_registry_name: demoreg
  
   instances:
 

@@ -30,6 +30,7 @@
 
   # -------------------- PRIVATE REGISTRY -----------------------------
 
-  # TODO(SJ) - Implement creating catalog source from CASE when private registry is used.
+  # __SJ__ - Implement creating catalog source from CASE when private registry is used.
+  #          Not needed - alternative implementation is planned
 
   when: (current_cp4i_instance.state | default('installed')) == 'installed'

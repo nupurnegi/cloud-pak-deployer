@@ -6,8 +6,11 @@
 #
 
 
+# TODO(SJ) Check here what is visible in the current cluster
+
 - debug:
     msg: Mirroring cp4i images using ibm-pak
+
 
 # We need information about registry at this point to be able to 
 # create manifests and correctly mirror images 

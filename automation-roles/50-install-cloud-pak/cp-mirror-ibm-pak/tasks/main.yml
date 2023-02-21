@@ -5,8 +5,18 @@
 #
 
 
+# TODO(SJ) Check here what is visible in all_config
+
+- debug:
+    msg:
+      - "/////////////// all_config ////////////"
+      - "{{ all_config }}"
+
+
+
 
 # Find combination of registries
+
 
 # Start portable registry if needed
 

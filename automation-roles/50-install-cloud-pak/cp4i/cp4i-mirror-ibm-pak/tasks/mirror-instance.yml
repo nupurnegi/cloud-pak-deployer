@@ -10,6 +10,7 @@
 #  cpd_skip_portable_registry    : if True mirror to target reg, otherwise to portable
 
 
+# TODO(SJ) Define input paramteres for registries
 
 
 - name: Mirror images for instance type {{ _p_current_cp4i_instance.type }}
@@ -22,8 +23,13 @@
     # _instance_properties 
     # _instance_type_details  
 
-  # oc ibm-pak generate mirror-manifests ${CASE_NAME} --version ${CASE_VERSION} icr.io
+  # Manifests
+  # ---------  
   # oc ibm-pak generate mirror-manifests $CASE_NAME --version $CASE_VERSION $TARGET_REGISTRY  
+  # oc ibm-pak generate mirror-manifests ibm-my-cloudpak intermediate-registry.com --version 1.0.0 --final-registry myregistry.com
+
+
+  # Follow stadard instructions to see what commands are needed....
 
 
   when: (_p_current_cp4i_instance.state | default('installed')) == 'installed'  
